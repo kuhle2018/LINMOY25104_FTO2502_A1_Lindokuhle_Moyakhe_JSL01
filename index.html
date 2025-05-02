@@ -1,86 +1,92 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <!-- Ensure proper scaling on mobile devices -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Page title and favicon -->
-  <title>Kanban Board</title>
-  <link rel="icon" href="favicon.ico" />
-  <!-- Tailwind CSS via CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-100 font-sans">
-  <!-- Overall container: a vertical stack on mobile, horizontal on desktop -->
-  <div class="min-h-screen flex flex-col md:flex-row">
-    <!-- Sidebar: appears above main content on mobile, left on desktop -->
-    <aside class="bg-white shadow-md p-4 md:w-1/4">
-      <!-- Desktop-only logo (hidden on mobile) -->
-      <img class="hidden md:block mb-4" src="../assets/logo-light.svg" alt="desktop-logo" />
-<div class="w-[123px] h-[15px] ml-32px bg-grey-100 font-[Plus_Jakarta_Sans] font-semibold text-12px leading-100% tracking-2.4px flex items-center justify-center">ALL BOARDS (1)
-  </div>
-    <div class="menu">
-<a href="#" class="w-[276px] h-[48px] mt-[34px] bg-[rgba(99,95,199,1)] rounded-tr-[100px] rounded-br-[100px] flex items-center justify-center text-white font-bold">Launch Career</a>   
-    </div>
-    </aside>
-    <!-- Main content area -->
-    <main class="bg-grey-100 rounded-lg shadow-md p-0 pl-1 flex-1">
-      <h1 class="block-w-[1140px] h-[100px] rounded-lg bg-white text-2xl font-bold ml-1  mr-0 p-0">Launch Career</h1>
-      
-      <!-- Kanban board: columns stack vertically on mobile; side by side on desktop -->
-      <div class="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
 
-        <!-- TODO Column -->
-        <div class="bg-grey-100 rounded-lg p-4 flex-1">
-          <div class="flex items-center mb-4">
-            <div class="w-4 h-4 bg-blue-500 rounded-full mr-2"></div>
-            <p class="text-sm bg-grey-100 font-semibold">TODO (4)</p>
-          </div>
-          <div class="space-y-4">
-            <div class="p-4 bg-white font-bold rounded shadow">
-              Launch Epic Career 🚀
-             </div>
-            <div class="p-4 bg-white font-bold rounded shadow">
-              Conquer React 🧠
-            </div>
-            <div class="p-4 bg-white font-bold rounded shadow">
-              Understand Databases 🗃️
-            </div>
-            <div class="p-4 bg-white font-bold rounded shadow">Crush Frameworks 📚
-           </div>
-          </div>
-        </div>
- <!-- DOING Column -->
-<div class="bg-grey-100 rounded-lg  p-4 flex-1">
-  <div class="flex items-center mb-4">
-    <div class="w-4 h-4 bg-purple-500 rounded-full mr-2"></div>
-       <p class="text-sm bg-grey-100 font-semibold">DOING (2)</p>
+    <link rel="stylesheet" href="./styles.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon.svg"
+    />
+    <title>Kanban Task Management</title>
+  </head>
+
+  <body>
+    <!-- Navigation Sidebar: Contains the logo, navigation links for boards, and theme toggle. -->
+    <nav class="side-bar" id="side-bar-div">
+      <div id="side-logo-div">
+        <img id="logo" src="./assets/logo-light.svg" alt="logo-light" />
       </div>
-          <div class="space-y-4">
-            <div class="p-4 bg-white font-bold rounded shadow">
-              Master JavaScript 💛
-            </div>
-            <div class="p-4 bg-white font-bold rounded shadow">Never Give Up 🏆
-            </div>
-          </div>
-        </div>
-        <!-- DONE Column -->
-        <div class="bg-grey-100 rounded-lg  p-4 flex-1">
-          <div class="flex items-center mb-4">
-            <div class="w-4 h-4 bg-green-500 rounded-full mr-2"></div>
-            <p class="text-sm bg-grey-100 font-semibold">DONE (2)</p>
-          </div>
-          <div class="space-y-4">
-            <div class="p-4 bg-white font-bold rounded shadow">
-              Explore ES6 Features 🚀
-            </div>
-            <div class="p-4 bg-white font-bold rounded shadow">
-              Have Fun 🐱
-            </div>
-          </div>
-        </div>
+
+      <div class="boards-nav-links-div" id="boards-nav-links-div">
+        <h4 id="headline-sidepanel">ALL BOARDS (1)</h4>
+        <button class="board-btn">Launch Career</button>
       </div>
-    </main>
-  </div>
-</body>
+    </nav>
+
+    <!-- Main Layout: Header with board title, add task button, and main content area for task columns. -->
+    <div id="layout">
+      <header id="header" class="sticky-header">
+        <div class="header-name-div">
+          <img
+            src="./assets/favicon.svg"
+            alt="logo-mobile"
+            class="logo-mobile"
+          />
+          <h2 class="header-board-name" id="header-board-name">
+            Launch Career
+          </h2>
+        </div>
+      </header>
+
+      <div class="container">
+        <main class="card-column-main">
+          <!-- Task Columns: Display tasks grouped by status (TODO, DOING, DONE). -->
+          <div class="column-div" data-status="todo">
+            <div id="todo-head-div" class="column-head-div">
+              <span class="dot" id="todo-dot"></span>
+              <h4 id="toDoText" class="columnHeader">TODO (4)</h4>
+            </div>
+            <!-- Tasks container for TODO -->
+            <div class="tasks-container">
+              <div class="task-div">Launch Epic Career 🚀</div>
+              <div class="task-div">Conquer React⚛️</div>
+              <div class="task-div">Understand Databases⚙️</div>
+              <div class="task-div">Crush Frameworks🖼️</div>
+            </div>
+          </div>
+          <!-- DOING Column -->
+          <div class="column-div" data-status="doing">
+            <div id="doing-head-div" class="column-head-div">
+              <span class="dot" id="doing-dot"></span>
+              <h4 id="doingText" class="columnHeader">DOING (2)</h4>
+            </div>
+            <!-- Tasks container for DOING -->
+            <div class="tasks-container">
+              <div class="task-div">Master JavaScript 💛</div>
+              <div class="task-div">Never Give Up 🏆</div>
+            </div>
+          </div>
+          <!-- DONE Column -->
+          <div class="column-div" data-status="done">
+            <div id="done-head-div" class="column-head-div">
+              <span class="dot" id="done-dot"></span>
+              <h4 id="doneText" class="columnHeader">DONE (2)</h4>
+            </div>
+            <!-- Tasks container for DONE -->
+            <div class="tasks-container">
+              <div class="task-div">Explore ES6 Features 🚀</div>
+              <div class="task-div">Have fun 🥳</div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
 </html>
